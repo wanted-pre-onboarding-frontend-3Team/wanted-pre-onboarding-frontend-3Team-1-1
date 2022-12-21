@@ -1,18 +1,33 @@
-const Auth = () => {
+import React, { useEffect } from 'react';
+
+import Input from './Input';
+
+import SubmitButton from './SubmitButton';
+
+const initialState = { email: '', password: '' };
+const AuthContainer = ({ status }) => {
+  const [info, setInfo] = React.useState(initialState);
+  useEffect(() => {
+    setInfo(initialState);
+  }, [status]);
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+  };
+  const getEmail = (e) => {
+    // if (!e.target.value.match(/ddd/)) {
+    //   console.log('ddd');
+    // }// util 함수 만들기
+    setInfo({ ...info, email: e.target.value });
+  };
   return (
     <div className="auth">
-      <h2>로그인</h2>
-      <form>
-        <label htmlFor="email">ID</label>
-        <input type="email" name="email" placeholder="example@email.com" />
-        <label htmlFor="password">PW</label>
-        <input type="password" name="password" placeholder="8자 이상" />
+      <form onSubmit={onFormSubmit}>
+        <Input type="email" label="ID" placeholder="example@email.com" val={info.email} func={getEmail} />
+        <Input type="password" label="PW" placeholder="8자 이상" val={info.password} func={() => console.log('dd')} />
         <div className="alert">dd</div>
-        <button className="login__btn" type="submit">
-          로그인
-        </button>
+        <SubmitButton text={status} />
       </form>
     </div>
   );
 };
-export default Auth;
+export default AuthContainer;

@@ -42,7 +42,7 @@
     "import/no-anonymous-default-export": "off",
     "no-param-reassign": ["error", { "props": false }],
     "no-use-before-define": "off",
-
+    "react/prop-types": "off",
     "no-shadow": "off",
     "no-unused-expressions": ["warn"],
     "prefer-const": ["warn"],
