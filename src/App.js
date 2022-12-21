@@ -4,9 +4,6 @@ import routes from './routes';
 import GlobalStyle from './style/globalStyle';
 
 const App = () => {
-<<<<<<< HEAD
-  return <GlobalStyle />;
-=======
   return (
     <Container>
       <GlobalStyle />
@@ -17,7 +14,6 @@ const App = () => {
       </Routes>
     </Container>
   );
->>>>>>> main
 };
 
 const Container = styled.div`
