@@ -1,11 +1,11 @@
 import { forwardRef } from 'react';
 import styled from 'styled-components';
 
-const AuthInput = forwardRef(({ label, type, onChange }, ref) => {
+const AuthInput = forwardRef(({ id, label, type, onChange, placeholder }, ref) => {
   return (
     <>
-      <InputLabel>{label}</InputLabel>
-      <InputUI type={type} onChange={onChange} ref={ref} />
+      <InputLabel htmlFor={id}>{label}</InputLabel>
+      <InputUI id={id} type={type} onChange={onChange} placeholder={placeholder} ref={ref} />
     </>
   );
 });
