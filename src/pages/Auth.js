@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import AuthForm from '../components/auth/AuthForm';
 
 const Auth = () => {
-  return <div>Auth</div>;
+  const [type, setType] = useState('회원가입');
+  return <AuthForm type={type} setType={setType} />;
 };
 
 export default Auth;
