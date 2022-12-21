@@ -24,22 +24,11 @@ const SignForm = () => {
   };
 
   return (
-    <Container className="flex flex-col w-full h-full items-center justify-center w-full pb-14">
-      <Form className="flex flex-col w-full px-28">
-        <Input
-          placeholder="이메일"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="border my-1 p-1"
-        />
+    <Container>
+      <Form>
+        <Input placeholder="이메일" value={email} onChange={(e) => setEmail(e.target.value)} />
         {emailValid || <Warn>이메일 형식을 맞춰주세요. (someone@example.com)</Warn>}
-        <Input
-          placeholder="비밀번호"
-          value={password}
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          className="border my-1 p-1"
-        />
+        <Input placeholder="비밀번호" value={password} type="password" onChange={(e) => setPassword(e.target.value)} />
         {passwordValid || <Warn>비밀번호는 8글자 이상이어야 합니다.</Warn>}
         <Button text="로그인" handleClick={(e) => handleSign(e, 'signin')} disabled={!canSubmit} />
         <Button text="회원가입" handleClick={(e) => handleSign(e, 'signup')} disabled={!canSubmit} />

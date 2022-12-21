@@ -2,12 +2,7 @@ import styled from 'styled-components';
 
 const Button = ({ text, handleClick, disabled }) => {
   return (
-    <CommonButton
-      type="submit"
-      onClick={handleClick}
-      className={`bg-slate-300 ${disabled || 'hover:bg-slate-400'}`}
-      disabled={disabled || false}
-    >
+    <CommonButton type="submit" onClick={handleClick} disabled={disabled || false}>
       {text}
     </CommonButton>
   );
