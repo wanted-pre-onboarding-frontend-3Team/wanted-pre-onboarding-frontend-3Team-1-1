@@ -31,11 +31,9 @@ const AuthForm = ({ loginPage, changeLoginPage }) => {
   }, [isValid]);
 
   const successHandler = (data) => {
-    if (loginPage) {
-      authCtx.setLogin(data.access_token);
-    } else {
-      alert('회원가입 되었습니다.');
-    }
+    if (loginPage) authCtx.setLogin(data.access_token);
+    else alert('회원가입 되었습니다.');
+
     changeLoginPage(true);
   };
 
