@@ -90,6 +90,10 @@ video {
   border: 0;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 article,
 aside,
 details,
