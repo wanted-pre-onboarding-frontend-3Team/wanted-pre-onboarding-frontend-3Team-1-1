@@ -140,8 +140,8 @@ table {
   outline: none;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
+  -ms-overflow-style: none; // IE and Edge
+  scrollbar-width: none; // Firefox
 
   &::before,
   &::after {
@@ -149,7 +149,7 @@ table {
   }
 
   &::-webkit-scrollbar {
-    display: none; 
+    display: none; // Chrome
   }
 }
 
@@ -164,8 +164,6 @@ a {
 select,
 input,
 textarea {
-  
-  
   font-size: 16px;
 }
 
@@ -175,7 +173,6 @@ button {
 }
 
 input::-webkit-contacts-auto-fill-button {
-  
   position: absolute;
   right: 0;
   display: none !important;
@@ -205,7 +202,6 @@ input[type="file"]::file-selector-button,
 button {
   color: initial;
 } 
-
 `;
 
 export default GlobalStyle;
