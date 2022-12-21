@@ -26,18 +26,12 @@ const useForm = (formId, initForm) => {
 
   const setValue = useCallback(
     (e) => {
-      const { name, value, type, checked } = e.target;
+      const { name, value } = e.target;
 
       checkValidation();
 
-      let result = value;
-
-      if (type === 'checkbox') {
-        result = checked;
-      }
-
       setForm((prev) => {
-        return { ...prev, [name]: result };
+        return { ...prev, [name]: value };
       });
     },
     [checkValidation],

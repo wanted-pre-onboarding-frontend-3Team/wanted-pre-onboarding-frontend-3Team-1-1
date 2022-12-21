@@ -15,7 +15,7 @@ const Button = (props) => {
   const updatedProps = useMemo(() => {
     const tmp = { ...props };
 
-    ['size', 'color', 'full'].forEach((key) => {
+    ['size', 'color'].forEach((key) => {
       delete tmp[key];
     });
 

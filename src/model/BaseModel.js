@@ -2,14 +2,9 @@ import axios from 'axios';
 
 class BaseModel {
   baseUrl = '';
-  actions = null;
 
   constructor() {
     this.baseUrl = process.env.REACT_APP_BASE_URL;
-  }
-
-  setActions(actions) {
-    this.actions = actions;
   }
 
   get(request) {

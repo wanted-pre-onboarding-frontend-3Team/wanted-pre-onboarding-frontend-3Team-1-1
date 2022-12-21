@@ -2,14 +2,14 @@ import { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
 const Input = (props) => {
-  const { onChange, full } = props;
+  const { onChange } = props;
 
   const [isError, setIsError] = useState(false);
 
   const updatedProps = useMemo(() => {
     const tmp = { ...props };
 
-    ['onChange', 'full'].forEach((key) => {
+    ['onChange'].forEach((key) => {
       delete tmp[key];
     });
 

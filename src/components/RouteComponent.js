@@ -17,10 +17,6 @@ const RouteComponent = (props) => {
 
     const token = localStorage.getItem('token');
 
-    if (token) {
-      localStorage.setItem('token', token);
-    }
-
     if (permission === PERMISSION_ALL) {
       passed = true;
     } else if (permission === PERMISSION_LOGIN) {
