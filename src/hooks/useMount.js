@@ -1,23 +1,25 @@
-export const useMount = (on_mount) => {
-  const is_mount = useRef(false);
-  const mount_count = useRef(0);
+import { useCallback, useEffect, useRef } from 'react';
+
+export const useMount = (onMount) => {
+  const mountRef = useRef(false);
+  const mountCount = useRef(0);
 
   const isMount = useCallback(() => {
-    return is_mount.current;
+    return mountRef.current;
   }, []);
 
   useEffect(() => {
-    is_mount.current = true;
-    mount_count.current = mount_count.current + 1;
+    mountRef.current = true;
+    mountCount.current += 1;
 
-    if (mount_count.current === 1) {
-      on_mount && on_mount();
+    if (mountCount.current === 1) {
+      onMount && onMount();
     }
 
     return () => {
-      is_mount.current = false;
+      mountRef.current = false;
     };
-  }, [on_mount]);
+  }, [onMount]);
 
   return [isMount];
 };
