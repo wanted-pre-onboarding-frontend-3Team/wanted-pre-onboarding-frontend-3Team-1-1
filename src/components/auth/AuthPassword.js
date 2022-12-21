@@ -1,20 +1,8 @@
-import { useEffect, useState } from 'react';
-import { validatePassword } from '../../utils/validateInput';
+import useValid from '../../hooks/useValid';
 import AuthInput from '../UI/AuthInput';
 
 const AuthPassword = ({ inputRef, validHandler }) => {
-  const [isValid, setIsValid] = useState(false);
-
-  useEffect(() => {
-    validHandler(isValid);
-  }, [isValid, validHandler]);
-
-  const changeHandler = (e) => {
-    const valid = validatePassword(e.target.value);
-
-    if (valid) setIsValid(true);
-    else setIsValid(false);
-  };
+  const { changeHandler } = useValid('password', validHandler);
 
   return (
     <AuthInput

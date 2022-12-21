@@ -1,20 +1,8 @@
 import AuthInput from '../UI/AuthInput';
-import { validateEmail } from '../../utils/validateInput';
-import { useEffect, useState } from 'react';
+import useValid from '../../hooks/useValid';
 
 const AuthEmail = ({ inputRef, validHandler }) => {
-  const [isValid, setIsValid] = useState(false);
-
-  useEffect(() => {
-    validHandler(isValid);
-  }, [isValid, validHandler]);
-
-  const changeHandler = (e) => {
-    const valid = validateEmail(e.target.value);
-
-    if (valid) setIsValid(true);
-    else setIsValid(false);
-  };
+  const { changeHandler } = useValid('email', validHandler);
 
   return (
     <AuthInput
