@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 const useHttp = () => {
   const sendRequest = useCallback(async (requestConfig, applyData) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_PRE_ONBORDING}${requestConfig.url}`, {
+      const response = await fetch(`${process.env.REACT_APP_URL}${requestConfig.url}`, {
         method: requestConfig.method ? requestConfig.method : 'GET',
         headers: requestConfig.headers ? requestConfig.headers : {},
         body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,

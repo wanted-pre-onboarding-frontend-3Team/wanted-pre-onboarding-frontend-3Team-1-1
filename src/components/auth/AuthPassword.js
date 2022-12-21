@@ -7,7 +7,7 @@ const AuthPassword = ({ inputRef, validHandler }) => {
 
   useEffect(() => {
     validHandler(isValid);
-  }, [isValid]);
+  }, [isValid, validHandler]);
 
   const changeHandler = (e) => {
     const valid = validatePassword(e.target.value);

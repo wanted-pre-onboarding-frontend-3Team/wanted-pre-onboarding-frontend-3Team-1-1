@@ -7,7 +7,7 @@ const AuthEmail = ({ inputRef, validHandler }) => {
 
   useEffect(() => {
     validHandler(isValid);
-  }, [isValid]);
+  }, [isValid, validHandler]);
 
   const changeHandler = (e) => {
     const valid = validateEmail(e.target.value);

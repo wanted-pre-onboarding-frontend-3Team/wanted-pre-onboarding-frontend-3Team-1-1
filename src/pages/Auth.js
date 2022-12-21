@@ -6,7 +6,7 @@ import AuthTitle from '../components/auth/AuthTitle';
 const Auth = () => {
   const [loginPage, setLoginPage] = useState(true);
 
-  const changeLoginPageHandler = () => setLoginPage(false);
+  const changeLoginPageHandler = (state) => setLoginPage(state);
 
   return (
     <AuthWrapper>
