@@ -1,14 +1,12 @@
-import { useCallback, useContext } from 'react';
+import { useCallback } from 'react';
 import styled from 'styled-components';
 import useForm from '../../hooks/useForm';
 import { useModelContext } from '../../store/ModelContext';
-import { TodoContext } from '../../store/TodoContext';
 import Button from '../Button';
 import TextInput from '../TextInput';
 
 const TodoEditForm = (prop) => {
-  const { id, isCompleted, todo, onEdit, setOnEdit } = prop;
-  const { setTodos } = useContext(TodoContext);
+  const { id, isCompleted, todo, setTodos, onEdit, setOnEdit } = prop;
   const { todolist, isSuccess } = useModelContext();
   const { form, setValue } = useForm({ todo, isCompleted });
 

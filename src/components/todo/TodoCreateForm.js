@@ -1,8 +1,7 @@
-import { useCallback, useContext } from 'react';
+import { useCallback } from 'react';
 import styled from 'styled-components';
 import useForm from '../../hooks/useForm';
 import { useModelContext } from '../../store/ModelContext';
-import { TodoContext } from '../../store/TodoContext';
 import Button from '../Button';
 import TextInput from '../TextInput';
 
@@ -10,8 +9,7 @@ const INIT_FORM = {
   todo: '',
 };
 
-const TodoCreateForm = () => {
-  const { setTodos } = useContext(TodoContext);
+const TodoCreateForm = ({ setTodos }) => {
   const { todolist, isSuccess } = useModelContext();
   const { form, setValue, setForm } = useForm(INIT_FORM);
 
@@ -39,6 +37,8 @@ const TodoCreateForm = () => {
 
 const TodoForm = styled.form`
   display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
 `;
 
 export default TodoCreateForm;

@@ -1,11 +1,9 @@
-import { useCallback, useContext } from 'react';
+import { useCallback } from 'react';
 import styled from 'styled-components';
 import { useModelContext } from '../../store/ModelContext';
-import { TodoContext } from '../../store/TodoContext';
 
 const TodoCompleteBtn = (prop) => {
-  const { id, isCompleted, todo } = prop;
-  const { setTodos } = useContext(TodoContext);
+  const { id, isCompleted, todo, setTodos } = prop;
   const { todolist, isSuccess } = useModelContext();
 
   const updateTodoComplete = useCallback(async () => {
@@ -23,14 +21,14 @@ const TodoCompleteBtn = (prop) => {
     }
   }, [id, todo, isCompleted, setTodos, isSuccess, todolist]);
 
-  const changeChk = () => {
+  const handleChk = () => {
     updateTodoComplete();
     return !isCompleted;
   };
 
   return (
     <div>
-      <CheckBtn type="checkbox" name="isCompleted" defaultChecked={isCompleted} onClick={changeChk} />
+      <CheckBtn type="checkbox" name="isCompleted" defaultChecked={isCompleted} onClick={handleChk} />
     </div>
   );
 };

@@ -1,15 +1,13 @@
-import { useCallback, useContext, useState } from 'react';
+import { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useModelContext } from '../../store/ModelContext';
-import { TodoContext } from '../../store/TodoContext';
 import Button from '../Button';
 import TodoCompleteBtn from './TodoCompleteBtn';
 import TodoEditForm from './TodoEditForm';
 
 const TodoItem = (prop) => {
-  const { id, isCompleted, todo } = prop;
+  const { id, isCompleted, todo, setTodos } = prop;
   const { todolist, isSuccess } = useModelContext();
-  const { setTodos } = useContext(TodoContext);
   const [onEdit, setOnEdit] = useState(false);
 
   const editToggle = () => {
