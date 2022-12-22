@@ -16,14 +16,14 @@ class TodoModel extends BaseModel {
     });
   }
 
-  updateTodos(id, data) {
+  updateTodo(id, data) {
     return this.put({
       path: `${this.path}/${id}`,
       data,
     });
   }
 
-  deleteTodos(id) {
+  deleteTodo(id) {
     return this.put({
       path: `${this.path}/${id}`,
     });
