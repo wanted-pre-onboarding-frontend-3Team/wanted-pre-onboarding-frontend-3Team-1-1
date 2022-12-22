@@ -16,7 +16,7 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
   const { account, isSuccess, isError } = useModelContext();
-  const { setValue, form, validation } = useForm('login-form', INIT_FORM);
+  const { register, form, validation } = useForm(INIT_FORM);
 
   const requestLogin = useCallback(
     async (e) => {
@@ -35,10 +35,11 @@ const LoginForm = () => {
   );
 
   return (
-    <StyledForm id="login-form" onSubmit={requestLogin}>
+    <StyledForm onSubmit={requestLogin}>
       <Label>로그인</Label>
-      <TextInput type="text" name="email" title="아이디" required onChange={setValue} />
-      <TextInput type="password" name="password" title="비밀번호" required onChange={setValue} />
+      <TextInput type="text" title="아이디" required {...register('email')} />
+      <TextInput type="password" title="비밀번호" required {...register('password')} />
+
       <Button disabled={!validation}>로그인</Button>
       <Button to="/auth?page=join" color={BUTTON_COLOR_WHITE}>
         회원가입
