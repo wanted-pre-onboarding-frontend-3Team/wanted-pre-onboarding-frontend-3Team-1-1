@@ -1,11 +1,13 @@
 import { createContext, useCallback, useContext, useMemo, useRef } from 'react';
 import AccountModel from '../model/AccountModel';
+import TodoModel from '../model/TodoModel';
 
 export const modelContext = createContext();
 
 export const ModelContext = ({ children }) => {
   const modelInstances = useRef({
     account: new AccountModel(),
+    todoModel: new TodoModel(),
   });
 
   const isSuccess = useCallback((response) => {
