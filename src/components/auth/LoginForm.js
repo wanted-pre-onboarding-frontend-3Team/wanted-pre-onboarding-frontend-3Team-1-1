@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import AuthEmail from './AuthEmail';
 import AuthPassword from './AuthPassword';
-import AuthButton from '../UI/AuthButton';
+import AuthButton from '../UI/auth/AuthButton';
 import useAuthForm from '../../hooks/useAuthForm';
 
 const LoginForm = () => {

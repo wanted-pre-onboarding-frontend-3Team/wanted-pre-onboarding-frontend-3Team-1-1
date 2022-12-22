@@ -1,4 +1,4 @@
-import AuthInput from '../UI/AuthInput';
+import AuthInput from '../UI/auth/AuthInput';
 import useValid from '../../hooks/useValid';
 
 const AuthEmail = ({ inputRef, validHandler }) => {

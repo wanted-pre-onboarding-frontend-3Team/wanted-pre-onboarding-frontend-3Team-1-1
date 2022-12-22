@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import useAuthForm from '../../hooks/useAuthForm';
-import AuthButton from '../UI/AuthButton';
+import AuthButton from '../UI/auth/AuthButton';
 import AuthEmail from './AuthEmail';
 import AuthPassword from './AuthPassword';
 

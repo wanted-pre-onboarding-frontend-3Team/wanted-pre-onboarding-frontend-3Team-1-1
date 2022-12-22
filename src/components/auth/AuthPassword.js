@@ -1,5 +1,5 @@
 import useValid from '../../hooks/useValid';
-import AuthInput from '../UI/AuthInput';
+import AuthInput from '../UI/auth/AuthInput';
 
 const AuthPassword = ({ inputRef, validHandler }) => {
   const value = inputRef.current?.value;

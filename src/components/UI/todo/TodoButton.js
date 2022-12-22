@@ -1,17 +1,13 @@
 import styled from 'styled-components';
 
-const AuthButton = ({ onClick, title, disabled }) => {
-  return (
-    <ButtonUI disabled={disabled} onClick={onClick}>
-      {title}
-    </ButtonUI>
-  );
+const TodoButton = ({ title, disabled }) => {
+  return <ButtonUI disabled={disabled}>{title}</ButtonUI>;
 };
 
 const ButtonUI = styled.button`
   appearance: none;
   border: none;
-  width: 400px;
+  width: 60px;
   height: 40px;
   font-size: 16px;
   border-radius: 8px;
@@ -30,4 +26,4 @@ const ButtonUI = styled.button`
   }
 `;
 
-export default AuthButton;
+export default TodoButton;
