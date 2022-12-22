@@ -63,6 +63,10 @@ const StyledButton = styled.button`
               background-color: #ffffff; 
               box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
               &:hover { background-color: #f7f7f7; }`;
+    } else if (color === 'red') {
+      css += `color: #ffffff; background-color: #e92c2c; 
+              box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.06), 0px 1px 1px rgba(0, 0, 0, 0.08);
+              &:hover { background-color: #ED5556; }`;
     }
 
     if (size === 'large') {
