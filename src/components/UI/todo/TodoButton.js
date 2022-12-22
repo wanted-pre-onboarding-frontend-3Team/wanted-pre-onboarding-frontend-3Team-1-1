@@ -1,11 +1,9 @@
 import styled, { css } from 'styled-components';
 
-const TodoButton = ({ title, disabled, children }) => {
-  return (
-    <ButtonUI title={title} disabled={disabled}>
-      {children}
-    </ButtonUI>
-  );
+const TodoButton = (props) => {
+  const { children } = props;
+
+  return <ButtonUI {...props}>{children}</ButtonUI>;
 };
 
 const ButtonUI = styled.button`
@@ -28,16 +26,21 @@ const ButtonUI = styled.button`
     opacity: 0.5;
   }
 
-  ${({ title }) => {
-    if (title === '수정')
+  ${({ btnName }) => {
+    if (btnName === '수정')
       return css`
         background: #fff;
         color: #000;
       `;
 
-    if (title === '삭제')
+    if (btnName === '삭제' || btnName === '취소')
       return css`
         background: #e92c2c;
+      `;
+
+    if (btnName === '완료')
+      return css`
+        background: #0085ff;
       `;
 
     return css;
