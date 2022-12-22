@@ -1,12 +1,37 @@
+import { useCallback, useContext } from 'react';
 import styled from 'styled-components';
+import { useModelContext } from '../../store/ModelContext';
+import { TodoContext } from '../../store/TodoContext';
 
 const TodoCompleteBtn = (prop) => {
-  const { isCompleted } = prop;
+  const { id, isCompleted, todo } = prop;
+  const { setTodos } = useContext(TodoContext);
+  const { todolist, isSuccess } = useModelContext();
+
+  const updateTodoComplete = useCallback(async () => {
+    const response = await todolist.updateTodo(id, { todo, isCompleted: !isCompleted });
+
+    if (isSuccess(response)) {
+      setTodos((prev) =>
+        prev.map((el) => {
+          if (el.id !== id) {
+            return el;
+          }
+          return response.data;
+        }),
+      );
+    }
+  }, [id, todo, isCompleted, setTodos, isSuccess, todolist]);
+
+  const changeChk = () => {
+    updateTodoComplete();
+    return !isCompleted;
+  };
 
   return (
-    <form>
-      <CheckBtn type="checkbox" name="isCompleteed" defaultChecked={isCompleted} />
-    </form>
+    <div>
+      <CheckBtn type="checkbox" name="isCompleted" defaultChecked={isCompleted} onClick={changeChk} />
+    </div>
   );
 };
 
@@ -18,7 +43,6 @@ const CheckBtn = styled.input`
   background-color: red;
   border-radius: 10px;
 
-  /*체크했을 때*/
   &:checked {
     background: blue;
   }
