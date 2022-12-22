@@ -51,6 +51,7 @@ const StyledInput = styled.input`
   background-color: #ffffff;
   transition: 200ms;
   outline: none;
+  width: 100%;
 
   &:hover {
     border-color: #969696;
