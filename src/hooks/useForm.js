@@ -1,5 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
-import { useMount } from './useMount';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const useForm = (initForm) => {
   const [validation, setValidation] = useState(false);
@@ -22,33 +21,35 @@ const useForm = (initForm) => {
     setValidation(result);
   }, []);
 
-  const setValue = useCallback(
-    (e) => {
-      const { name, value } = e.target;
+  const setValue = useCallback((e) => {
+    const { type, name, value, checked } = e.target;
 
-      checkValidation();
+    let updatedValue = value;
 
-      setForm((prev) => {
-        return { ...prev, [name]: value };
-      });
-    },
-    [checkValidation],
-  );
+    if (type === 'checkbox') {
+      updatedValue = checked;
+    }
+
+    setForm((prev) => {
+      return { ...prev, [name]: updatedValue };
+    });
+  }, []);
 
   const register = useCallback(
     (name) => {
       return {
         name,
         onChange: setValue,
+        value: form[name],
         ref: (el) => inputs.current.set(name, el),
       };
     },
-    [setValue],
+    [form, setValue],
   );
 
-  useMount(() => {
+  useEffect(() => {
     checkValidation();
-  });
+  }, [checkValidation, form]);
 
   return { form, setForm, setValue, validation, register };
 };
