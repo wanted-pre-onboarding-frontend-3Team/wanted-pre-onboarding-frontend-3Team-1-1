@@ -56,7 +56,7 @@ const LoginForm = () => {
   };
 
   const inputValidHandler = useCallback((field, valid) => setIsValid((prev) => ({ ...prev, [field]: valid })), []);
-  const signupNavigateHandler = () => navigate('/auth?page=join');
+  const signupNavigateHandler = () => navigate('/auth?page=signup');
 
   return (
     <>
