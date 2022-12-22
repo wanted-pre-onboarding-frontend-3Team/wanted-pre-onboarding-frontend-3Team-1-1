@@ -1,28 +1,26 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useMount } from './useMount';
 
-const useForm = (formId, initForm) => {
+const useForm = (initForm) => {
   const [validation, setValidation] = useState(false);
 
   const [form, setForm] = useState(initForm);
 
+  const inputs = useRef(new Map());
+
   const checkValidation = useCallback(() => {
-    const formElement = document.getElementById(formId);
-
-    const inputs = formElement?.getElementsByTagName('input') || [];
-
     let result = true;
 
-    for (const input of inputs) {
+    inputs.current.forEach((input) => {
       const { required, validity } = input;
 
       if (required && !validity.valid) {
         result = false;
       }
-    }
+    }, []);
 
     setValidation(result);
-  }, [formId]);
+  }, []);
 
   const setValue = useCallback(
     (e) => {
@@ -37,11 +35,22 @@ const useForm = (formId, initForm) => {
     [checkValidation],
   );
 
+  const register = useCallback(
+    (name) => {
+      return {
+        name,
+        onChange: setValue,
+        ref: (el) => inputs.current.set(name, el),
+      };
+    },
+    [setValue],
+  );
+
   useMount(() => {
     checkValidation();
   });
 
-  return { form, setForm, setValue, validation };
+  return { form, setForm, setValue, validation, register };
 };
 
 export default useForm;
