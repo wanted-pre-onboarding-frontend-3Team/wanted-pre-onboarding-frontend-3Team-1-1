@@ -10,7 +10,7 @@ const TodoEditForm = (prop) => {
   const { todolist, isSuccess } = useModelContext();
   const { form, setValue } = useForm({ todo, isCompleted });
 
-  const createTodo = useCallback(
+  const updateTodoText = useCallback(
     async (e) => {
       e.preventDefault();
 
@@ -31,10 +31,15 @@ const TodoEditForm = (prop) => {
     [todolist, id, form, isSuccess, setTodos, setOnEdit, onEdit],
   );
 
+  const handleFormOff = () => {
+    setOnEdit(!onEdit);
+  };
+
   return (
-    <TodoForm onSubmit={createTodo}>
+    <TodoForm onSubmit={updateTodoText}>
       <TextInput type="text" name="todo" defaultValue={todo} required onChange={setValue} />
       <Button>수정</Button>
+      <Button onClick={handleFormOff}>X</Button>
     </TodoForm>
   );
 };
