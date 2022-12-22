@@ -7,7 +7,7 @@ export const modelContext = createContext();
 export const ModelContext = ({ children }) => {
   const modelInstances = useRef({
     account: new AccountModel(),
-    todo: new TodoModel(),
+    todolist: new TodoModel(),
   });
 
   const isSuccess = useCallback((response) => {
