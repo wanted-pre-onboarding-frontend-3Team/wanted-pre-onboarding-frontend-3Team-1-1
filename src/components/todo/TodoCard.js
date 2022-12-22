@@ -2,7 +2,7 @@ import { memo, useCallback, useState } from 'react';
 import styled from 'styled-components';
 import useForm from '../../hooks/useForm';
 import { useModelContext } from '../../store/ModelContext';
-import { useTodoContext } from '../../store/TodoContext';
+import { useTodoUpdater } from '../../store/TodoContext';
 import Button, { BUTTON_COLOR_WHITE, BUTTON_SIZE_SMALL } from '../Button';
 import Checkbox from '../CheckBox';
 import Input from '../Input';
@@ -10,7 +10,7 @@ import Input from '../Input';
 const TodoCard = (props) => {
   const { id, todo, isCompleted } = props;
 
-  const { deleteTodo, updateTodo } = useTodoContext();
+  const { deleteTodo, updateTodo } = useTodoUpdater();
   const { todoModel, isSuccess, isError } = useModelContext();
 
   const [isEdit, setIsEdit] = useState(false);
@@ -82,8 +82,6 @@ const StyledCard = styled.li`
   border-radius: 8px;
   background-color: #ffffff;
 `;
-
-const StyledTextBox = styled.p``;
 
 const StyledButtonBox = styled.div`
   display: flex;

@@ -1,44 +1,19 @@
-import styled from 'styled-components';
 import AddTodoForm from '../components/todo/AddTodoForm';
-import TodoCard from '../components/todo/TodoCard';
 import Label from '../components/Label';
-import { useMount } from '../hooks/useMount';
-import { useModelContext } from '../store/ModelContext';
-import { useTodoContext } from '../store/TodoContext';
+import List from '../components/List';
+import TodoCard from '../components/todo/TodoCard';
+import { useTodoState } from '../store/TodoContext';
 
 const Todo = () => {
-  const { todos, setTodos } = useTodoContext();
-
-  const { todoModel, isSuccess, isError } = useModelContext();
-
-  useMount(async () => {
-    const response = await todoModel.getTodos();
-
-    if (isSuccess(response)) {
-      setTodos(response.data);
-    } else if (isError(response)) {
-      alert(response.data.message);
-    }
-  });
+  const todos = useTodoState();
 
   return (
     <div>
       <Label>Todo</Label>
       <AddTodoForm />
-      <TodoList>
-        {todos.map((todo) => (
-          <TodoCard key={todo.id} {...todo} />
-        ))}
-      </TodoList>
+      <List items={todos} onRender={(item) => <TodoCard key={item.id} {...item} />} />
     </div>
   );
 };
-
-const TodoList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 16px;
-`;
 
 export default Todo;

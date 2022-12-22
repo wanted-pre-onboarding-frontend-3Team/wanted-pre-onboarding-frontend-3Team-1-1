@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import styled from 'styled-components';
 import useForm from '../../hooks/useForm';
 import { useModelContext } from '../../store/ModelContext';
-import { useTodoContext } from '../../store/TodoContext';
+import { useTodoUpdater } from '../../store/TodoContext';
 import Button from '../Button';
 import Input from '../Input';
 
@@ -11,7 +11,7 @@ const INIT_FORM = {
 };
 
 const AddTodoForm = () => {
-  const { addTodo } = useTodoContext();
+  const { addTodo } = useTodoUpdater();
 
   const { todoModel, isSuccess, isError } = useModelContext();
   const { form, setForm, register, validation } = useForm(INIT_FORM);
