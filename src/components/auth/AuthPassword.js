@@ -2,15 +2,16 @@ import useValid from '../../hooks/useValid';
 import AuthInput from '../UI/AuthInput';
 
 const AuthPassword = ({ inputRef, validHandler }) => {
-  const { changeHandler } = useValid('password', validHandler);
+  const { changeHandler, isValid, isTouched } = useValid('password', validHandler, inputRef.current?.value);
 
   return (
     <AuthInput
-      id="email"
+      id={inputRef.current?.type}
       label="비밀번호"
       type="password"
       onChange={changeHandler}
       ref={inputRef}
+      isValid={isTouched && !isValid}
       placeholder="비밀번호는 8자리 이상입니다."
     />
   );

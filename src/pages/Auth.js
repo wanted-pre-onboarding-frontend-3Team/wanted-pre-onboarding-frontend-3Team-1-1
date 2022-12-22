@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import LoginForm from '../components/auth/LoginForm';
 import SignupForm from '../components/auth/SignupForm';
+import AuthTitle from '../components/auth/AuthTitle';
 
 const Auth = () => {
   const [searchParams] = useSearchParams();
@@ -12,6 +13,7 @@ const Auth = () => {
 
   return (
     <AuthWrapper>
+      <AuthTitle title={page === 'login' ? '로그인' : '회원가입'} />
       {page === 'login' && <LoginForm />}
       {page === 'signup' && <SignupForm />}
     </AuthWrapper>

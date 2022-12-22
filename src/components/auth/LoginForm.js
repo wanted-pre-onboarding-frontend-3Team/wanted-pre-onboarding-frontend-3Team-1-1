@@ -3,20 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import useHttp from '../../hooks/useHttp';
 import AuthContext from '../../store/auth/authContext';
-import AuthTitle from './AuthTitle';
+import AuthEmail from './AuthEmail';
+import AuthPassword from './AuthPassword';
+import AuthButton from '../UI/AuthButton';
 
 const LoginForm = () => {
   const [isValid, setIsValid] = useState({ email: false, password: false });
   const [formIsValid, setFormIsValid] = useState(false);
 
   const navigate = useNavigate();
-
   const authCtx = useContext(AuthContext);
 
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  const sendRequest = useHttp();
+  const { sendRequest, error } = useHttp();
 
   useEffect(() => {
     emailRef.current.focus();
@@ -55,16 +56,29 @@ const LoginForm = () => {
   };
 
   const inputValidHandler = useCallback((field, valid) => setIsValid((prev) => ({ ...prev, [field]: valid })), []);
+  const signupNavigateHandler = () => navigate('/auth?page=join');
 
   return (
-    <FormWrapper onSubmit={loginHandler}>
-      <AuthTitle title="로그인" />
-    </FormWrapper>
+    <>
+      <FormWrapper onSubmit={loginHandler}>
+        <AuthEmail inputRef={emailRef} validHandler={inputValidHandler} />
+        <AuthPassword inputRef={passwordRef} validHandler={inputValidHandler} />
+        {error && <ErrorMessage>{error}</ErrorMessage>}
+        <AuthButton title="로그인" disabled={!formIsValid} />
+      </FormWrapper>
+      <AuthButton title="회원가입" onClick={signupNavigateHandler} />
+    </>
   );
 };
 
 const FormWrapper = styled.form`
   margin-top: 30px;
+`;
+
+const ErrorMessage = styled.p`
+  color: red;
+  margin: 5px 0;
+  text-align: center;
 `;
 
 export default LoginForm;

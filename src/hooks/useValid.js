@@ -1,24 +1,26 @@
 import { useEffect, useState } from 'react';
 import { validateEmail, validatePassword } from '../utils/validateInput';
 
-const useValid = (field, validHandler) => {
+const useValid = (field, validHandler, value) => {
   const [isValid, setIsValid] = useState(false);
+  const [isTouched, setIsTouched] = useState(false);
 
   useEffect(() => {
-    validHandler(isValid);
-  }, [isValid, validHandler]);
+    validHandler(field, isValid);
+  }, [isValid, validHandler, field, value]);
 
   const changeHandler = (e) => {
-    let valid;
+    setIsTouched(true);
+
+    let valid = false;
 
     if (field === 'email') valid = validateEmail(e.target.value);
     if (field === 'password') valid = validatePassword(e.target.value);
 
-    if (valid) setIsValid(true);
-    else setIsValid(false);
+    setIsValid(valid);
   };
 
-  return { changeHandler };
+  return { changeHandler, isValid, isTouched };
 };
 
 export default useValid;

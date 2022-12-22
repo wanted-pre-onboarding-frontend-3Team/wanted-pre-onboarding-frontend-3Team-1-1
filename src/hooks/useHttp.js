@@ -1,16 +1,18 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 const useHttp = () => {
+  const [error, setError] = useState(null);
+
   const sendRequest = useCallback(async (requestConfig, applyData) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_URL}${requestConfig.url}`, {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}${requestConfig.url}`, {
         method: requestConfig.method ? requestConfig.method : 'GET',
         headers: requestConfig.headers ? requestConfig.headers : {},
         body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
       });
 
       if (!response.ok) {
-        throw new Error('api error');
+        if (requestConfig.url === '/auth/signin') throw new Error('아이디, 비밀번호를 확인해주세요.');
       }
 
       if (requestConfig.method === 'DELETE') return;
@@ -19,11 +21,11 @@ const useHttp = () => {
 
       applyData(data);
     } catch (error) {
-      console.log(error);
+      setError(error.message || 'api error!');
     }
   }, []);
 
-  return sendRequest;
+  return { sendRequest, error };
 };
 
 export default useHttp;

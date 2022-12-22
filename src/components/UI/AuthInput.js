@@ -1,11 +1,11 @@
 import { forwardRef } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const AuthInput = forwardRef(({ id, label, type, onChange, placeholder }, ref) => {
+const AuthInput = forwardRef(({ id, label, type, onChange, placeholder, isValid }, ref) => {
   return (
     <>
       <InputLabel htmlFor={id}>{label}</InputLabel>
-      <InputUI id={id} type={type} onChange={onChange} placeholder={placeholder} ref={ref} />
+      <InputUI id={id} type={type} onChange={onChange} placeholder={placeholder} isValid={isValid} ref={ref} />
     </>
   );
 });
@@ -29,6 +29,12 @@ const InputUI = styled.input`
   line-height: 18px;
   padding: 0 14px;
   margin-bottom: 10px;
+
+  ${({ isValid }) =>
+    isValid &&
+    css`
+      border: 1px solid red;
+    `}
 `;
 
 export default AuthInput;
