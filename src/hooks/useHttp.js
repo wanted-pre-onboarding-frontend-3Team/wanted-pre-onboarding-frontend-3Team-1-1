@@ -13,6 +13,7 @@ const useHttp = () => {
 
       if (!response.ok) {
         if (requestConfig.url === '/auth/signin') throw new Error('아이디, 비밀번호를 확인해주세요.');
+        if (requestConfig.url === '/auth/signup') throw new Error('이미 등록된 아이디입니다.');
       }
 
       if (requestConfig.method === 'DELETE') return;

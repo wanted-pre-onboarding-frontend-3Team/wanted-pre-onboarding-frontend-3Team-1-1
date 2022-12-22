@@ -2,7 +2,8 @@ import AuthInput from '../UI/AuthInput';
 import useValid from '../../hooks/useValid';
 
 const AuthEmail = ({ inputRef, validHandler }) => {
-  const { changeHandler, isValid, isTouched } = useValid('email', validHandler, inputRef.current?.value);
+  const value = inputRef.current?.value;
+  const { changeHandler, isValid, isTouched } = useValid('email', validHandler, value);
 
   return (
     <AuthInput

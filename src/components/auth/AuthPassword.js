@@ -2,7 +2,8 @@ import useValid from '../../hooks/useValid';
 import AuthInput from '../UI/AuthInput';
 
 const AuthPassword = ({ inputRef, validHandler }) => {
-  const { changeHandler, isValid, isTouched } = useValid('password', validHandler, inputRef.current?.value);
+  const value = inputRef.current?.value;
+  const { changeHandler, isValid, isTouched } = useValid('password', validHandler, value);
 
   return (
     <AuthInput
