@@ -10,7 +10,6 @@ const Auth = () => {
   const [searchParams] = useSearchParams();
 
   const page = useMemo(() => searchParams.get('page') || 'login', [searchParams]);
-  console.log(searchParams.get('page'));
 
   return (
     <AuthWrapper>

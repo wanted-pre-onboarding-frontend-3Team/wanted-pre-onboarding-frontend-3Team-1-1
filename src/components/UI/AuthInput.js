@@ -1,11 +1,23 @@
-import { forwardRef } from 'react';
+import { forwardRef, useMemo } from 'react';
 import styled, { css } from 'styled-components';
 
-const AuthInput = forwardRef(({ id, label, type, onChange, placeholder, isValid }, ref) => {
+const AuthInput = forwardRef((props, ref) => {
+  const removeInvalid = (e) => e.preventDefault();
+
+  const updatedProps = useMemo(() => {
+    const tmp = { ...props };
+
+    ['label'].forEach((key) => {
+      delete tmp[key];
+    });
+
+    return tmp;
+  }, [props]);
+
   return (
     <>
-      <InputLabel htmlFor={id}>{label}</InputLabel>
-      <InputUI id={id} type={type} onChange={onChange} placeholder={placeholder} isValid={isValid} ref={ref} />
+      <InputLabel htmlFor={props.id}>{props.label}</InputLabel>
+      <InputUI {...updatedProps} onInvalid={removeInvalid} ref={ref} />
     </>
   );
 });
