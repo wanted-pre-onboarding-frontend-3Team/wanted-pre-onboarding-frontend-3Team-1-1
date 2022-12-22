@@ -4,12 +4,10 @@ import AuthContext from '../../store/auth/authContext';
 import { PERMISSION_ALL, PERMISSION_LOGIN, PERMISSION_NOT_LOGIN } from '../../utils/permission';
 
 const RouteComponent = ({ permission, component: Component }) => {
-  const authCtx = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [render, setRender] = useState(false);
-
-  const { isLoggedIn } = authCtx;
 
   useEffect(() => {
     const token = isLoggedIn;
@@ -22,11 +20,8 @@ const RouteComponent = ({ permission, component: Component }) => {
       if (!token) passed = true;
     }
 
-    if (passed) {
-      setRender(true);
-    } else {
-      navigate('/');
-    }
+    if (passed) setRender(true);
+    else navigate('/');
   }, [navigate, permission, isLoggedIn]);
 
   return render && <Component />;

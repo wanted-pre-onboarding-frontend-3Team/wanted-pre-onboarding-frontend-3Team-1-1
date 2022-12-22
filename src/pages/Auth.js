@@ -1,18 +1,19 @@
-import { useState } from 'react';
+import { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-import AuthForm from '../components/auth/AuthForm';
-import AuthTitle from '../components/auth/AuthTitle';
+import LoginForm from '../components/auth/LoginForm';
+import SignupForm from '../components/auth/SignupForm';
 
 const Auth = () => {
-  const [loginPage, setLoginPage] = useState(true);
+  const [searchParams] = useSearchParams();
 
-  const changeLoginPageHandler = (state) => setLoginPage(state);
+  const page = useMemo(() => searchParams.get('page') || 'login', [searchParams]);
 
   return (
     <AuthWrapper>
-      <AuthTitle title={loginPage ? '로그인' : '회원가입'} />
-      <AuthForm loginPage={loginPage} changeLoginPage={changeLoginPageHandler} />
+      {page === 'login' && <LoginForm />}
+      {page === 'signup' && <SignupForm />}
     </AuthWrapper>
   );
 };
