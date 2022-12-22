@@ -1,9 +1,9 @@
-import { useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
 import Label, { LABEL_COLOR_MESSAGE } from './Label';
 import Input from './Input';
 import styled from 'styled-components';
 
-const TextInput = (props) => {
+const TextInput = (props, ref) => {
   const { title, message, required } = props;
 
   const updatedProps = useMemo(() => {
@@ -20,7 +20,7 @@ const TextInput = (props) => {
     <StyledTextInput>
       {title && <Label required={required}>{title}</Label>}
 
-      <Input {...updatedProps} />
+      <Input ref={ref} {...updatedProps} />
 
       {message && <Label color={LABEL_COLOR_MESSAGE}>{message}</Label>}
     </StyledTextInput>
@@ -34,4 +34,4 @@ const StyledTextInput = styled.div`
   width: 100%;
 `;
 
-export default TextInput;
+export default forwardRef(TextInput);

@@ -1,7 +1,7 @@
-import { useCallback, useMemo, useState } from 'react';
+import { forwardRef, useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
-const Input = (props) => {
+const Input = (props, ref) => {
   const { onChange } = props;
 
   const [isError, setIsError] = useState(false);
@@ -32,6 +32,7 @@ const Input = (props) => {
 
   return (
     <StyledInput
+      ref={ref}
       className={isError ? 'isError' : ''}
       onChange={onChangeHandler}
       onInvalid={(e) => {
@@ -66,4 +67,4 @@ const StyledInput = styled.input`
   }
 `;
 
-export default Input;
+export default forwardRef(Input);
