@@ -24,7 +24,7 @@ class TodoModel extends BaseModel {
   }
 
   deleteTodo(id) {
-    return this.put({
+    return this.delete({
       path: `${this.path}/${id}`,
     });
   }
