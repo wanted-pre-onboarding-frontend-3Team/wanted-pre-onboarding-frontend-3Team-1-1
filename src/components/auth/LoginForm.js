@@ -26,9 +26,9 @@ const LoginForm = () => {
         <AuthEmail inputRef={emailRef} validHandler={inputValidHandler} />
         <AuthPassword inputRef={passwordRef} validHandler={inputValidHandler} />
         {error && <ErrorMessage>{error}</ErrorMessage>}
-        <AuthButton title="로그인" disabled={!formIsValid} />
+        <AuthButton disabled={!formIsValid}>로그인</AuthButton>
       </FormWrapper>
-      <AuthButton title="회원가입" onClick={signupNavigateHandler} />
+      <AuthButton onClick={signupNavigateHandler}>회원가입</AuthButton>
     </>
   );
 };

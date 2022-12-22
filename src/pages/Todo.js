@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import TodoForm from '../components/todo/TodoForm';
+import TodoList from '../components/todo/TodoList';
 
 const Todo = () => {
   return (
     <TodoWrapper>
       <h1>투두리스트</h1>
       <TodoForm />
+      <TodoList />
     </TodoWrapper>
   );
 };

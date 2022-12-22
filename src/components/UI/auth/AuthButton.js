@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const AuthButton = ({ onClick, title, disabled }) => {
+const AuthButton = ({ onClick, disabled, children }) => {
   return (
     <ButtonUI disabled={disabled} onClick={onClick}>
-      {title}
+      {children}
     </ButtonUI>
   );
 };

@@ -1,7 +1,11 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const TodoButton = ({ title, disabled }) => {
-  return <ButtonUI disabled={disabled}>{title}</ButtonUI>;
+const TodoButton = ({ title, disabled, children }) => {
+  return (
+    <ButtonUI title={title} disabled={disabled}>
+      {children}
+    </ButtonUI>
+  );
 };
 
 const ButtonUI = styled.button`
@@ -18,12 +22,26 @@ const ButtonUI = styled.button`
   color: #fff;
   box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 2px 1px rgb(0 0 0 / 6%), 0 1px 1px rgb(0 0 0 / 8%);
   cursor: pointer;
-  margin-bottom: 10px;
 
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
   }
+
+  ${({ title }) => {
+    if (title === '수정')
+      return css`
+        background: #fff;
+        color: #000;
+      `;
+
+    if (title === '삭제')
+      return css`
+        background: #e92c2c;
+      `;
+
+    return css;
+  }}
 `;
 
 export default TodoButton;

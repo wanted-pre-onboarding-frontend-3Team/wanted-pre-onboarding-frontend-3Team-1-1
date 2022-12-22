@@ -19,12 +19,13 @@ const TodoForm = () => {
 
     addTodo(todoInputRef.current?.value);
     todoInputRef.current.value = '';
+    setIsValid(false);
   };
 
   return (
     <TodoFormWrapper onSubmit={submitHandler}>
       <TodoInput id="todo" type="text" label="투두리스트" onChange={changeHandler} ref={todoInputRef} />
-      <TodoButton title="등록" disabled={!isValid} />
+      <TodoButton disabled={!isValid}>등록</TodoButton>
     </TodoFormWrapper>
   );
 };

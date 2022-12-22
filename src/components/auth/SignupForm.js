@@ -20,7 +20,7 @@ const SignupForm = () => {
       <AuthEmail inputRef={emailRef} validHandler={inputValidHandler} />
       <AuthPassword inputRef={passwordRef} validHandler={inputValidHandler} />
       {error && <ErrorMessage>{error}</ErrorMessage>}
-      <AuthButton title="회원가입" disabled={!formIsValid} />
+      <AuthButton disabled={!formIsValid}>회원가입</AuthButton>
     </FormWrapper>
   );
 };
