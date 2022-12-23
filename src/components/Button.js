@@ -8,6 +8,7 @@ export const BUTTON_SIZE_SMALL = 'small';
 
 export const BUTTON_COLOR_BLUE = 'blue';
 export const BUTTON_COLOR_WHITE = 'white';
+export const BUTTON_COLOR_RED = 'red';
 
 const Button = (props) => {
   const { size = BUTTON_SIZE_MEDIUM, color = BUTTON_COLOR_BLUE, to } = props;
@@ -63,6 +64,10 @@ const StyledButton = styled.button`
               background-color: #ffffff; 
               box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
               &:hover { background-color: #f7f7f7; }`;
+    } else if (color === 'red') {
+      css += `color: #ffffff; background-color: #d50000; 
+              box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.06), 0px 1px 1px rgba(0, 0, 0, 0.08);
+              &:hover { background-color: #ef5350; }`;
     }
 
     if (size === 'large') {

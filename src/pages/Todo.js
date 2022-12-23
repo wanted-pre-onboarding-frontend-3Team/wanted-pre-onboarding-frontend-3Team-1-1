@@ -22,7 +22,7 @@ const Todo = () => {
 
   return (
     <TodoWrpper>
-      <h1>To-do List</h1>
+      <TodoTitle>To-Do List</TodoTitle>
       <TodoCreateForm setTodos={setTodos} />
       {todos ? (
         <>
@@ -41,6 +41,12 @@ const TodoWrpper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
+`;
+
+const TodoTitle = styled.div`
+  font-size: 25px;
+  margin-bottom: 10px;
+  font-weight: 600;
 `;
 
 export default Todo;
