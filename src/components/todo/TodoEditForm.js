@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import styled from 'styled-components';
 import useForm from '../../hooks/useForm';
 import { useModelContext } from '../../store/ModelContext';
-import Button from '../Button';
+import Button, { BUTTON_COLOR_RED, BUTTON_COLOR_WHITE } from '../Button';
 import TextInput from '../TextInput';
 
 const TodoEditForm = (prop) => {
@@ -38,8 +38,10 @@ const TodoEditForm = (prop) => {
   return (
     <TodoForm onSubmit={updateTodoText}>
       <TextInput type="text" name="todo" defaultValue={todo} required onChange={setValue} />
-      <Button>수정</Button>
-      <Button onClick={handleFormOff}>X</Button>
+      <Button color={BUTTON_COLOR_RED}>수정</Button>
+      <Button onClick={handleFormOff} color={BUTTON_COLOR_WHITE}>
+        X
+      </Button>
     </TodoForm>
   );
 };

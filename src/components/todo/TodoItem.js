@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useModelContext } from '../../store/ModelContext';
-import Button from '../Button';
+import Button, { BUTTON_COLOR_RED } from '../Button';
 import TodoCompleteBtn from './TodoCompleteBtn';
 import TodoEditForm from './TodoEditForm';
 
@@ -30,8 +30,12 @@ const TodoItem = (prop) => {
       ) : (
         <>
           <TodoText isCompleted={isCompleted}>{todo}</TodoText>
-          <Button onClick={editToggle}>수정</Button>
-          <Button onClick={deleteTodo}>삭제</Button>
+          <Button onClick={editToggle} color={BUTTON_COLOR_RED}>
+            수정
+          </Button>
+          <Button onClick={deleteTodo} color={BUTTON_COLOR_RED}>
+            삭제
+          </Button>
         </>
       )}
     </TodoItemBlock>
@@ -41,7 +45,10 @@ const TodoItem = (prop) => {
 const TodoItemBlock = styled.div`
   display: flex;
   align-items: center;
-  gap: 1px;
+  gap: 5px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 8px;
 `;
 
 const TodoText = styled.div`

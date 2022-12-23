@@ -28,7 +28,13 @@ const TodoCompleteBtn = (prop) => {
 
   return (
     <div>
-      <CheckBtn type="checkbox" name="isCompleted" defaultChecked={isCompleted} onClick={handleChk} />
+      <CheckBtn
+        type="checkbox"
+        name="isCompleted"
+        isCompleted={isCompleted}
+        defaultChecked={isCompleted}
+        onClick={handleChk}
+      />
     </div>
   );
 };
@@ -38,11 +44,12 @@ const CheckBtn = styled.input`
   content: '';
   width: 20px;
   height: 20px;
-  background-color: red;
-  border-radius: 10px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+  margin-left: 8px;
 
   &:checked {
-    background: blue;
+    background: #e57373;
   }
 `;
 export default TodoCompleteBtn;
