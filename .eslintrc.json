@@ -26,7 +26,6 @@
   "rules": {
     "arrow-body-style": "off",
     "semi": "off",
-    "react/prop-types": "off",
     "react/function-component-definition": ["warn", { "namedComponents": "arrow-function" }],
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
@@ -41,12 +40,12 @@
     "import/prefer-default-export": "off",
     "import/no-unresolved": "off",
     "import/order": "off",
-    "import/no-cycle": "off",
     "import/no-anonymous-default-export": "off",
     "no-param-reassign": ["error", { "props": false }],
     "no-use-before-define": "off",
     "react/prop-types": "off",
     "import/no-cycle": "off",
+    "no-alert": "off",
 
     "no-shadow": "off",
     "no-unused-expressions": ["warn"],
