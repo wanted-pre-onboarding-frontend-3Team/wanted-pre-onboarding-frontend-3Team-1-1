@@ -10,15 +10,19 @@ const TodoItem = ({ todo, setTodoList }) => {
   const [newTodo, setNewTodo] = useState(todo.todo);
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleCheck = useCallback(async () => {
-    const response = await todoModel.updateTodo({ todo: todo.todo, isCompleted: !todo.isCompleted }, todo.id);
+  const handleCheck = useCallback(
+    async (e) => {
+      e.preventDefault();
+      const response = await todoModel.updateTodo({ todo: todo.todo, isCompleted: e.target.checked }, todo.id);
 
-    if (isSuccess(response)) {
-      setIsChecked(!isChecked);
-    } else if (isError(response)) {
-      //
-    }
-  }, [isChecked, isError, isSuccess, todoModel, todo]);
+      if (isSuccess(response)) {
+        setIsChecked(!isChecked);
+      } else if (isError(response)) {
+        //
+      }
+    },
+    [isChecked, isError, isSuccess, todoModel, todo],
+  );
 
   const handleEdit = () => {
     setIsEditing(!isEditing);
