@@ -1,6 +1,4 @@
 import { createContext, useContext, useMemo, useState } from 'react';
-import { useMount } from '../hooks/useMount';
-import { useModelContext } from './ModelContext';
 
 const TodoStateContext = createContext();
 const TodoUpdaterContext = createContext();
@@ -8,12 +6,11 @@ const TodoUpdaterContext = createContext();
 export const TodoContext = (props) => {
   const { children } = props;
 
-  const { todoModel, isSuccess, isError } = useModelContext();
-
   const [todos, setTodos] = useState([]);
 
   const actions = useMemo(() => {
     return {
+      setTodos,
       addTodo: (todo) => {
         setTodos((prev) => [...prev, todo]);
       },
@@ -25,16 +22,6 @@ export const TodoContext = (props) => {
       },
     };
   }, []);
-
-  useMount(async () => {
-    const response = await todoModel.getTodos();
-
-    if (isSuccess(response)) {
-      setTodos(response.data);
-    } else if (isError(response)) {
-      alert(response.data.message);
-    }
-  });
 
   return (
     <TodoStateContext.Provider value={todos}>
