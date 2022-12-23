@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import styled from 'styled-components';
 
 const List = (props) => {
@@ -20,4 +19,4 @@ const StyledList = styled.ul`
   margin-top: 16px;
 `;
 
-export default memo(List);
+export default List;
