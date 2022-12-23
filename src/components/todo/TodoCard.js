@@ -45,7 +45,7 @@ const TodoCard = (props) => {
   );
 
   return (
-    <StyledCard as={isEdit ? 'form' : 'li'} onSubmit={requestUpdateTodo}>
+    <StyledCard isCompleted={isCompleted} as={isEdit ? 'form' : 'li'} onSubmit={requestUpdateTodo}>
       {isEdit ? <Input required {...register('todo')} /> : <p>{todo}</p>}
 
       {isEdit ? (
@@ -81,6 +81,10 @@ const StyledCard = styled.li`
   border: 1px solid #e8e8e8;
   border-radius: 8px;
   background-color: #ffffff;
+
+  p {
+    ${({ isCompleted }) => isCompleted && 'text-decoration: line-through;'}
+  }
 `;
 
 const StyledButtonBox = styled.div`
